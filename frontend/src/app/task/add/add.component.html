@@ -1,0 +1,46 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        
+        <div class="col-md-8">
+            <h2 class="text-center">Add Task</h2>
+            <form novalidate class="form">
+                <div class="form-group">
+                <label for="taskName">Project Name</label>
+                <input type="text" [(ngModel)]="projectData.projectName" class="form-control" id="projectName" name="projectName" >
+                <small id="taskHelp" class="form-text text-muted">Write a name to descrip your Project.</small>
+                </div>
+            
+                <button (click)="addNewTask()" class="btn btn-success">+</button>
+                <div class="" *ngFor="let task of tasks;let index=index">
+                    <hr>
+                    
+
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="taskName">Project Name</label>
+                            <input type="text" class="form-control" name="taskName-{{index}}" [(ngModel)]="task.name" placeholder="Enter Task Name">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="status">status</label>
+                            <select class="form-control" [(ngModel)]="task.status" name="status-{{index}}">
+                                <option value="doing">Doing</option>
+                                <option value="done">Done</option>
+                                <option value="canceled">Canceled</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-2">
+                            <button (click)="removeTask(index)" *ngIf="index" class="btn btn-danger">-</button>
+                        </div>
+                       
+                    </div>
+                    
+                </div>
+                
+                <hr>
+                <button (click)="onSubmit()" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
